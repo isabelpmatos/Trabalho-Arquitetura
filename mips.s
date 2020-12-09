@@ -1,4 +1,10 @@
-.data
+#Trabalho desenvolvido para a disciplina Arquitetura de Computadores do curso de Engenharia de Software PUC - MG
+#Prof: Luís Fabrício Wanderley Góes
+#Alunas: Daniella Rodrigues de Melo e Isabel Pinheiro Matos
+#Desenvolvimento de um neurônio perceptron que realiza o somatório de dois números iguais
+
+
+.data # dados a serem utilizados pelo QtSpim
 
 entrada:	.float 1.0
 p1:		.float 0.0
