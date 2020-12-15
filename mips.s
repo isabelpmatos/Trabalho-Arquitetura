@@ -1,10 +1,4 @@
-#Trabalho desenvolvido para a disciplina Arquitetura de Computadores do curso de Engenharia de Software PUC - MG
-#Prof: Luís Fabrício Wanderley Góes
-#Alunas: Daniella Rodrigues de Melo e Isabel Pinheiro Matos
-#Desenvolvimento de um neurônio perceptron que realiza o somatório de dois números iguais
-
-
-.data # dados a serem utilizados pelo QtSpim
+.data
 
 entrada:	.float 1.0
 p1:		.float 0.0
@@ -33,7 +27,7 @@ main:
 	lwc1 $f5, saidaesperada
 	lwc1 $f6, resultado
 
-	add.s $f5, $f0, $f0
+	add.s $f5, $f0, $f0		#saidaesperada = entrada + entrada
 	addi $t0, $zero, 1		#i = 1
 
 FOR1:	slt $t1, $t0, 6			#compara i com 6
@@ -41,10 +35,10 @@ FOR1:	slt $t1, $t0, 6			#compara i com 6
 	mtc1 $t0, $f0
   	cvt.s.w $f0, $f0		#entrada = i
 					
-	add.s $f5, $f0, $f0
+	add.s $f5, $f0, $f0		#saidaesperada = entrada + entrada
 	add.s $f7, $f1, $f2		#f7 = soma p1 e p2
 	mul.s $f8, $f7, $f0		#f8 = multip soma por entrada
-	sub.s $f3, $f5, $f8
+	sub.s $f3, $f5, $f8		#erroGlobal = saidaesperada - $f8
 	
 	# imprime mensagemA
 	li $v0, 4 
@@ -87,7 +81,7 @@ FOR1:	slt $t1, $t0, 6			#compara i com 6
 	mov.s $f12, $f2
 	syscall
 
-	# atualização erro global
+	# atualização erro global: erroGlobal = saidaesperada - peso1 - peso2
 	sub.s $f9, $f1, $f2
 	sub.s $f3, $f5, $f9
 
@@ -104,7 +98,7 @@ FOR2:	slt $t1, $t0, 11		#compara i com 11
 	# resultado
 	mul.s $f13, $f0, $f1		#f13 = entrada * peso1
 	mul.s $f14, $f0, $f2		#f14 = entrada * peso2
-	add.s $f6, $f13, $f14		# resultao = f13 + f14
+	add.s $f6, $f13, $f14		# resultado = f13 + f14
 
 	# imprime mensagemE
 	li $v0, 4 
@@ -139,4 +133,4 @@ FOR2:	slt $t1, $t0, 11		#compara i com 11
 	addi $t0, $t0, 1 
 	j FOR2
 
-FimFor2: jr $ra
+FimFor2:jr $ra
